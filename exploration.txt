@@ -1,0 +1,50 @@
+frontend: react
+- audio file ()
+  - deconstruct and play audio
+
+Backend:
+- flask
+  - STT -> LLM -> TTS
+  - 1s+ -> 1s+ -> 2s+
+    - 5s "hi how are you"
+  - back to frontend
+
+STT
+ - https://artificialanalysis.ai/speech-to-text
+ - 2 ways
+   - 1: prerecorded audio file: HTTP POST
+   - 2: "streaming" audio: websocket connection, STT in realtime
+- whisper openai api ($0.006/m)
+- deepgram - fastest, multilingual ($200 free credit)
+
+LLM
+- 4o, 4o mini, groq (super fast), gemini, locally (ollama, CPU, dumb slow)
+- 4o-mini cheap, smart
+
+TTS
+- 2 ways
+  - 1: send back after completing entire audio file
+  - 2: "streaming" audio: SSR, fastapi (async, streaming bytes asynchronously)
+- elevenlabs >>> best sounding, super expensive
+  - cartesia, assemblyai
+  - openai: 4o mini tts ($0.06/m)
+
+
+Large Providers: (apis)
+Opensource
+- STT: whisper
+- TTS: piper, XTTSv2
+
+
+Tasks:
+- sign page: auth
+- playing with prompts: LLM
+  - openai: STT LLM TTS, play around with apis
+- setup database: supabase
+
+
+Research:
+- STT LLM TTS (outdated, older way)
+- openai azure amazon: voice to voice model: $1 a minute
+- orchestration tools:
+  - Livekit (webRTC), Pipecat
