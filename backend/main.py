@@ -5,11 +5,14 @@ from flask import Flask, request, send_file, after_this_request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from openai import OpenAI
+from auth_routes import auth
 
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+app.register_blueprint(auth)
 
 # Create the OpenAI client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
